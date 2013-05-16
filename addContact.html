@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agenda de Contatos PhoneGap</title>
+        
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
+    	<script>
+    		
+    		function onSuccess(contact) {
+    			alert("Salvo com Sucesso");
+			};
+			
+			function onError(contactError) {
+			    alert("Error = " + contactError.code);
+			};
+    		
+    		function saveContact()
+			{
+				var myContact = navigator.contacts.create();
+		        myContact.displayName = document.getElementById('nameContact').value;
+		        myContact.nickname = document.getElementById('nameContact').value;
+
+				var phoneNumbers = [];
+				phoneNumbers[0] = new ContactField('Celular', document.getElementById('celContact').value, true);
+				myContact.phoneNumbers = phoneNumbers;
+				
+		        myContact.save(onSuccess(myContact),onError);
+		        
+		        
+			}
+			
+    	</script>
+    </head>
+    <body>
+    	<div id="all">
+	    	<div id="title">
+	    		<h3>Adicionar Contato</h3>
+	        </div>
+        	<div id="body">
+        		<br>
+        		<br>
+	        	<a href="index.html">Voltar</a>
+	        	<br>
+				<form>
+				Nome: 
+				<input type="text" name="nameContact" id="nameContact">
+				<br>
+				Celular: 
+				<input type="text" name="celContact" id="celContact">
+				<input type="submit" value="Salvar" onclick="saveContact()">
+				</form>
+				<br>
+				<p id="retorno"></p>
+	        </div>
+        </div>
+	</body>
+</html>
