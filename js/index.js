@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -45,5 +46,60 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    
+    showAlert: function (message, title) {
+        if (navigator.notification) {
+            navigator.notification.alert(message, null, title, 'OK');
+        } else {
+            alert(title ? (title + ": " + message) : message);
+        }
+    },
+    
+    renderHomeView: function() {
+    var html =
+            "<div data-role='header' data-role='fieldcontain' data-position='fixed'>"+
+        "<a href='#defaultpanel' data-role='button' data-corners='false' data-theme='c'>menu</a>"+
+        "<h1>Basic App</h1>"+
+    "</div>"+
+    
+        "<div data-role='content'>"+
+            
+"<!-- section header content -->"+
+                "<div class='header-content' >"+
+                    "<h1>Time Now</h1>"+
+                    "<p>what time is it now?</p>"+
+                "</div>"+
+            
+"<!-- section select city -->"+
+                "<div data-role='fieldcontain'>"+
+                    "<label for='sltCity'> Select city: </label>"+
+                    "<select data-inline='false' data-placeholder='true' name='sltCity' id='sltCity'></select>"+
+                "</div>"+
+            
+"<!-- section button Time -->"+
+                "<div class='section-ButtonTime' id='section-ButtonTime'>"+
+                    "<input data-role='button' class='buttonTime' id='buttonTime' type='button' value='Try it' onclick='test_call_xml()'/>"+
+                "</div>"+
+            
+"<!-- section response content -->"+
+            "<div class='response-content' id='response-content'></div>"+
+        "</div>"+
+    
+    "<div data-role='footer' data-position='fixed'>"+
+    "</div>"+
+    
+     "<!-- defaultpanel -->"+
+    "<div data-role='panel' id='defaultpanel' data-theme='a'>"+
+        "<div class='panel-content'>"+
+            "<h3>Default panel options</h3>"+
+            "<p>This panel has all the default options: positioned on the left with the reveal display mode."+
+                        "The panel markup is <em>before</em> the header, content and footer in the source order.</p>"+
+            "<p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>"+
+            "<a href='#demo-links' data-rel='close' data-role='button' data-theme='c' data-icon='delete' data-inline='true'>Close panel</a>"+
+        "</div><!-- /content wrapper for padding -->"+
+    "</div><!-- /defaultpanel -->"
+    $('body').html(html);
+    
     }
 };
