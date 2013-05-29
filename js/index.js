@@ -20,6 +20,9 @@
 var app = {
     // Application Constructor
     initialize: function() {
+
+        this.showAlert('initialize','metodo');
+
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -27,6 +30,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+        this.showAlert('bindEvents','metodo');
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -34,12 +38,14 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        this.showAlert('onDeviceReady','metodo');
         app.receivedEvent('deviceready');
         //app.checkConnection();
         //app.renderHomeView();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        this.showAlert('receivedEvent','metodo');
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -61,7 +67,8 @@ var app = {
         }
     },
 
-    function checkConnection() {
+    checkConnection: function() {
+        this.showAlert('checkConnection','metodo');
         var networkState = navigator.connection.type;
 
         var states = {};
