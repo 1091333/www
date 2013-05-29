@@ -35,7 +35,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         //app.receivedEvent('deviceready');
-        app.renderHomeView();
+        app.checkConnection();
+        //app.renderHomeView();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,7 +48,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        sleep(5000);
     },
     
     showAlert: function (message, title) {
@@ -56,6 +56,22 @@ var app = {
         } else {
             alert(title ? (title + ": " + message) : message);
         }
+    },
+
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        this.showAlert('Connection type: ' + states[networkState],'Connection type');
     },
     
     renderHomeView: function() {
