@@ -34,8 +34,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
-        app.checkConnection();
+        app.receivedEvent('deviceready');
+        //app.checkConnection();
         //app.renderHomeView();
     },
     // Update DOM on a Received Event
@@ -46,6 +46,9 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+
+        //  teste checkconnection()
+        this.checkConnection();
 
         console.log('Received Event: ' + id);
     },
@@ -79,44 +82,44 @@ var app = {
             "<div data-role='header' data-role='fieldcontain' data-position='fixed'>"+
         "<a href='#defaultpanel' data-role='button' data-corners='false' data-theme='c'>menu</a>"+
         "<h1>Basic App</h1>"+
-    "</div>"+
-    
-        "<div data-role='content'>"+
+            "</div>"+
             
-"<!-- section header content -->"+
-                "<div class='header-content' >"+
-                    "<h1>Time Now</h1>"+
-                    "<p>what time is it now?</p>"+
+                "<div data-role='content'>"+
+                    
+        "<!-- section header content -->"+
+                        "<div class='header-content' >"+
+                            "<h1>Time Now</h1>"+
+                            "<p>what time is it now?</p>"+
+                        "</div>"+
+                    
+        "<!-- section select city -->"+
+                        "<div data-role='fieldcontain'>"+
+                            "<label for='sltCity'> Select city: </label>"+
+                            "<select data-inline='false' data-placeholder='true' name='sltCity' id='sltCity'></select>"+
+                        "</div>"+
+                    
+        "<!-- section button Time -->"+
+                        "<div class='section-ButtonTime' id='section-ButtonTime'>"+
+                            "<input data-role='button' class='buttonTime' id='buttonTime' type='button' value='Try it' onclick='test_call_xml()'/>"+
+                        "</div>"+
+                    
+        "<!-- section response content -->"+
+                    "<div class='response-content' id='response-content'></div>"+
                 "</div>"+
             
-"<!-- section select city -->"+
-                "<div data-role='fieldcontain'>"+
-                    "<label for='sltCity'> Select city: </label>"+
-                    "<select data-inline='false' data-placeholder='true' name='sltCity' id='sltCity'></select>"+
-                "</div>"+
+            "<div data-role='footer' data-position='fixed'>"+
+            "</div>"+
             
-"<!-- section button Time -->"+
-                "<div class='section-ButtonTime' id='section-ButtonTime'>"+
-                    "<input data-role='button' class='buttonTime' id='buttonTime' type='button' value='Try it' onclick='test_call_xml()'/>"+
-                "</div>"+
-            
-"<!-- section response content -->"+
-            "<div class='response-content' id='response-content'></div>"+
-        "</div>"+
-    
-    "<div data-role='footer' data-position='fixed'>"+
-    "</div>"+
-    
-     "<!-- defaultpanel -->"+
-    "<div data-role='panel' id='defaultpanel' data-theme='a'>"+
-        "<div class='panel-content'>"+
-            "<h3>Default panel options</h3>"+
-            "<p>This panel has all the default options: positioned on the left with the reveal display mode."+
-                        "The panel markup is <em>before</em> the header, content and footer in the source order.</p>"+
-            "<p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>"+
-            "<a href='#demo-links' data-rel='close' data-role='button' data-theme='c' data-icon='delete' data-inline='true'>Close panel</a>"+
-        "</div><!-- /content wrapper for padding -->"+
-    "</div><!-- /defaultpanel -->"
+             "<!-- defaultpanel -->"+
+            "<div data-role='panel' id='defaultpanel' data-theme='a'>"+
+                "<div class='panel-content'>"+
+                    "<h3>Default panel options</h3>"+
+                    "<p>This panel has all the default options: positioned on the left with the reveal display mode."+
+                                "The panel markup is <em>before</em> the header, content and footer in the source order.</p>"+
+                    "<p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>"+
+                    "<a href='#demo-links' data-rel='close' data-role='button' data-theme='c' data-icon='delete' data-inline='true'>Close panel</a>"+
+                "</div><!-- /content wrapper for padding -->"+
+            "</div><!-- /defaultpanel -->"
     $('body').html(html);
     
     }
